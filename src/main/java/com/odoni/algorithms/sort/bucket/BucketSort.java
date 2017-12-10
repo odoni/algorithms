@@ -3,13 +3,14 @@ package com.odoni.algorithms.sort.bucket;
 import com.odoni.algorithms.sort.Sort;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class BucketSort implements Sort {
 
-	public Integer[] sort(Integer[] arrayToSort) {
+	public int[] sort(int[] arrayToSort) {
 		int max = getMaxFromArray(arrayToSort);
 		Map<Integer, Integer> bucketMap = new HashMap<>();
 		for (int i = 0; i <= max; i++) {
@@ -27,9 +28,8 @@ public class BucketSort implements Sort {
 		return arrayToSort;
 	}
 
-	protected int getMaxFromArray(Integer[] arrayToSort) {
-		return Arrays.asList(arrayToSort).stream()
-				.max(Comparator.comparingInt(Integer::intValue))
-				.orElse(0);
+	protected int getMaxFromArray(int[] arrayToSort) {
+		List<Integer> numbers = Arrays.stream(arrayToSort).boxed().collect(Collectors.toList());
+		return numbers.stream().mapToInt(Integer::intValue).max().getAsInt();
 	}
 }

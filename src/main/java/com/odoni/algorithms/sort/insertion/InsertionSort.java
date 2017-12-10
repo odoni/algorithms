@@ -5,7 +5,7 @@ import com.odoni.algorithms.sort.Sort;
 public class InsertionSort implements Sort {
 
 	@Override
-	public Integer[] sort(Integer[] arrayToSort) {
+	public int[] sort(int[] arrayToSort) {
 		for (int i = 0; i < arrayToSort.length; i++) {
 			int index = arrayToSort[i];
 			int j = i;

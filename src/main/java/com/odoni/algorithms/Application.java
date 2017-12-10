@@ -6,21 +6,21 @@ import com.odoni.algorithms.sort.bucket.BucketSort;
 import com.odoni.algorithms.sort.insertion.InsertionSort;
 import com.odoni.algorithms.sort.selection.SelectionSort;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class Application {
 
-	private static Integer[] generateUnsortedArray(int length) {
+	private static int[] generateUnsortedArray(int length) {
 		long startArray = System.currentTimeMillis();
-		Integer[] numbers = new Integer[length];
-		for (int i = 0; i < length; i++) {
-			numbers[i]=(int)Math.random();
-		}
+		int[] numbers = new Random().ints(length, 4, length).toArray();
 		long endArray = System.currentTimeMillis();
 		System.out.println("[" + length + "] Data generated in: " + (endArray - startArray) + " ms");
 		return numbers;
 	}
 
 	public static void main(String... args) {
-		Integer[] arrayToSort = generateUnsortedArray(100000);
+		int[] arrayToSort = generateUnsortedArray(100000);
 
 		performBucketSort(arrayToSort);
 		performBubbleSort(arrayToSort);
@@ -28,35 +28,43 @@ public class Application {
 		performInsertionSort(arrayToSort);
 	}
 
-	private static void performBucketSort(Integer[] arrayToSort) {
+	private static void performBucketSort(int[] arrayToSort) {
 		Sort bucketSort = new BucketSort();
+		int[] newArrayToSort = copyArray(arrayToSort);
 		long startBucket = System.currentTimeMillis();
-		bucketSort.sort(arrayToSort);
+		bucketSort.sort(newArrayToSort);
 		long endBucket = System.currentTimeMillis();
 		System.out.println("Bucket sort in: " + (endBucket - startBucket) + " ms");
 	}
 
-	private static void performBubbleSort(Integer[] arrayToSort) {
+	private static void performBubbleSort(int[] arrayToSort) {
 		Sort bubbleSort = new BubbleSort();
+		int[] newArrayToSort = copyArray(arrayToSort);
 		long startBubble = System.currentTimeMillis();
-		bubbleSort.sort(arrayToSort);
+		bubbleSort.sort(newArrayToSort);
 		long endBubble = System.currentTimeMillis();
 		System.out.println("Bubble sort in: " + (endBubble - startBubble) + " ms");
 	}
 
-	private static void performSelectionSort(Integer[] arrayToSort) {
+	private static void performSelectionSort(int[] arrayToSort) {
 		Sort selectionSort = new SelectionSort();
+		int[] newArrayToSort = copyArray(arrayToSort);
 		long startSelection = System.currentTimeMillis();
-		selectionSort.sort(arrayToSort);
+		selectionSort.sort(newArrayToSort);
 		long endSelection = System.currentTimeMillis();
 		System.out.println("Selection sort in: " + (endSelection - startSelection) + " ms");
 	}
 
-	private static void performInsertionSort(Integer[] arrayToSort) {
+	private static void performInsertionSort(int[] arrayToSort) {
 		Sort insertionSort = new InsertionSort();
+		int[] newArrayToSort = copyArray(arrayToSort);
 		long startInsertion = System.currentTimeMillis();
-		insertionSort.sort(arrayToSort);
+		insertionSort.sort(newArrayToSort);
 		long endInsertion = System.currentTimeMillis();
 		System.out.println("Insertion sort in: " + (endInsertion - startInsertion) + " ms");
+	}
+
+	private static int[] copyArray(int[] arrayToCopy) {
+		return Arrays.copyOf(arrayToCopy, arrayToCopy.length);
 	}
 }

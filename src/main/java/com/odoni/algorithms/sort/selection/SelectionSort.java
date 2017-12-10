@@ -5,7 +5,7 @@ import com.odoni.algorithms.sort.Sort;
 public class SelectionSort implements Sort {
 
 	@Override
-	public Integer[] sort(Integer[] arrayToSort) {
+	public int[] sort(int[] arrayToSort) {
 		for (int i = 0; i < arrayToSort.length-1; i++) {
 			int min = i;
 			for (int j = i + 1; j < arrayToSort.length; j++) {
