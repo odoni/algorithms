@@ -4,6 +4,7 @@ import com.odoni.algorithms.sort.Sort;
 import com.odoni.algorithms.sort.bubble.BubbleSort;
 import com.odoni.algorithms.sort.bucket.BucketSort;
 import com.odoni.algorithms.sort.insertion.InsertionSort;
+import com.odoni.algorithms.sort.merge.MergeSort;
 import com.odoni.algorithms.sort.selection.SelectionSort;
 
 import java.util.Arrays;
@@ -26,6 +27,7 @@ public class Application {
 		performBubbleSort(arrayToSort);
 		performSelectionSort(arrayToSort);
 		performInsertionSort(arrayToSort);
+		performMergeSort(arrayToSort);
 	}
 
 	private static void performBucketSort(int[] arrayToSort) {
@@ -62,6 +64,15 @@ public class Application {
 		insertionSort.sort(newArrayToSort);
 		long endInsertion = System.currentTimeMillis();
 		System.out.println("Insertion sort in: " + (endInsertion - startInsertion) + " ms");
+	}
+
+	private static void performMergeSort(int[] arrayToSort) {
+		Sort mergeSort = new MergeSort();
+		int[] newArrayToSort = copyArray(arrayToSort);
+		long startMerge = System.currentTimeMillis();
+		mergeSort.sort(newArrayToSort);
+		long endMerge = System.currentTimeMillis();
+		System.out.println("Merge sort in: " + (endMerge - startMerge) + " ms");
 	}
 
 	private static int[] copyArray(int[] arrayToCopy) {

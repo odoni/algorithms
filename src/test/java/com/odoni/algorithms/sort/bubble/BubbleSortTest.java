@@ -7,7 +7,7 @@ import static org.junit.Assert.assertArrayEquals;
 public class BubbleSortTest {
 
 	@Test
-	public void shouldSortUsingBucketSort() {
+	public void shouldSortUsingBubbleSort() {
 		int[] arrayToSort = {1,4,13,5,8,9};
 		int[] arrayExpected = {1,4,5,8,9,13};
 		BubbleSort bubbleSort = new BubbleSort();
@@ -16,7 +16,7 @@ public class BubbleSortTest {
 	}
 
 	@Test
-	public void shouldSortUsingBucketSortWithDuplicatedValues() {
+	public void shouldSortUsingBubbleSortWithDuplicatedValues() {
 		int[] arrayToSort = {1,4,13,5,8,9,5};
 		int[] arrayExpected = {1,4,5,5,8,9,13};
 		BubbleSort bubbleSort = new BubbleSort();
