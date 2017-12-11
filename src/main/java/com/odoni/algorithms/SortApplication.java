@@ -7,18 +7,10 @@ import com.odoni.algorithms.sort.insertion.InsertionSort;
 import com.odoni.algorithms.sort.merge.MergeSort;
 import com.odoni.algorithms.sort.selection.SelectionSort;
 
-import java.util.Arrays;
-import java.util.Random;
+import static com.odoni.algorithms.ArrayUtils.copyArray;
+import static com.odoni.algorithms.ArrayUtils.generateUnsortedArray;
 
-public class Application {
-
-	private static int[] generateUnsortedArray(int length) {
-		long startArray = System.currentTimeMillis();
-		int[] numbers = new Random().ints(length, 4, length).toArray();
-		long endArray = System.currentTimeMillis();
-		System.out.println("[" + length + "] Data generated in: " + (endArray - startArray) + " ms");
-		return numbers;
-	}
+public class SortApplication {
 
 	public static void main(String... args) {
 		int[] arrayToSort = generateUnsortedArray(100000);
@@ -73,9 +65,5 @@ public class Application {
 		mergeSort.sort(newArrayToSort);
 		long endMerge = System.currentTimeMillis();
 		System.out.println("Merge sort in: " + (endMerge - startMerge) + " ms");
-	}
-
-	private static int[] copyArray(int[] arrayToCopy) {
-		return Arrays.copyOf(arrayToCopy, arrayToCopy.length);
 	}
 }
