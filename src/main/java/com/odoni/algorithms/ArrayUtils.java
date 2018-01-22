@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class ArrayUtils {
@@ -35,6 +36,20 @@ public class ArrayUtils {
 			lstNumbers.add(i);
 		}
 		Collections.shuffle(lstNumbers);
+		long endArray = System.currentTimeMillis();
+		System.out.println("[" + length + "] Data generated in: " + (endArray - startArray) + " ms");
+		return lstNumbers.stream().mapToInt(Integer::intValue).toArray();
+	}
+
+	public static int[] generateUnsortedArrayWithoutRepetedValuesUsingHash(int length) {
+		long startArray = System.currentTimeMillis();
+		List<Integer> lstNumbers = new ArrayList<>();
+		while (lstNumbers.size() <= length) {
+			Integer randomNumber = new Random().nextInt(length*2	);
+			if (!lstNumbers.contains(randomNumber)) {
+				lstNumbers.add(randomNumber);
+			}
+		}
 		long endArray = System.currentTimeMillis();
 		System.out.println("[" + length + "] Data generated in: " + (endArray - startArray) + " ms");
 		return lstNumbers.stream().mapToInt(Integer::intValue).toArray();

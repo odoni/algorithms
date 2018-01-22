@@ -5,15 +5,18 @@ import com.odoni.algorithms.pairs.BruteForcePairs;
 import com.odoni.algorithms.pairs.HashPairs;
 
 import static com.odoni.algorithms.ArrayUtils.copyArray;
-import static com.odoni.algorithms.ArrayUtils.generateUnsortedArrayWithoutRepetedValues;
+import static com.odoni.algorithms.ArrayUtils.generateUnsortedArrayWithoutRepetedValuesUsingHash;
 
 public class PairsApplication {
 
 	public static void main(String... args) {
-		int[] arrayToFindPairs = generateUnsortedArrayWithoutRepetedValues(100000);
-		performBruteForce(arrayToFindPairs);
+		int[] arrayToFindPairs = generateUnsortedArrayWithoutRepetedValuesUsingHash(100000);
+//		performBruteForce(arrayToFindPairs);
+//		performAverageForce(arrayToFindPairs);
+//		performHashForce(arrayToFindPairs);
+
 		performAverageForce(arrayToFindPairs);
-		performHashForce(arrayToFindPairs);
+		performAverageForceNoStructure(arrayToFindPairs);
 	}
 
 	private static void performBruteForce(int[] arrayToFindPairs) {
@@ -41,5 +44,14 @@ public class PairsApplication {
 		int[] pairs = hashPairs.findPairs(newArrayToFindPairs, 100);
 		long endHashForce = System.currentTimeMillis();
 		System.out.println("HashForce find " + pairs.length + " in: " + (endHashForce - startHashForce) + " ms");
+	}
+
+	private static void performAverageForceNoStructure(int[] arrayToFindPairs) {
+		AverageForcePairs averageForcePairs = new AverageForcePairs();
+		int[] newArrayToFindPairs = copyArray(arrayToFindPairs);
+		long startAverageForce = System.currentTimeMillis();
+		int[] pairs = averageForcePairs.findPairsWithoutStructures(newArrayToFindPairs, 100);
+		long endAverageForce = System.currentTimeMillis();
+		System.out.println("AverageForceWithoutStructure find " + pairs.length + " in: " + (endAverageForce - startAverageForce) + " ms");
 	}
 }
