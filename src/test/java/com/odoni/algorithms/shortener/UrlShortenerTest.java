@@ -16,8 +16,8 @@ public class UrlShortenerTest {
 		messageDigest.update(url.getBytes());
 		byte[] bytes = messageDigest.digest();
 		String hash = DatatypeConverter.printHexBinary(bytes).toUpperCase();
-		System.out.println(hash);
+//		System.out.println(hash);
 		String base64 = Base64.getEncoder().encodeToString(hash.getBytes());
-		System.out.println(base64);
+//		System.out.println(base64);
 	}
 }

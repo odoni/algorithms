@@ -10,7 +10,7 @@ public class ContactsTest {
 
 	@BeforeClass
 	public static void setUp() {
-		contacts.insertContact("Anna");
+		contacts.insertContact("Annna");
 		contacts.insertContact("Bob");
 		contacts.insertContact("Carl");
 		contacts.insertContact("Daniel");
@@ -22,7 +22,7 @@ public class ContactsTest {
 
 	@Test
 	public void shouldReturnThreeContacts() {
-		int contactsFound = contacts.countContactsStartingWith("Anna");
+		int contactsFound = contacts.countContactsStartingWith("An");
 		assertEquals(3, contactsFound);
 	}
 
